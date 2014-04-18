@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <title>DataPet</title>
+    <link rel='stylesheet' href='./stylesheets/bootstrap.min.css' />
+    <link rel='stylesheet' href='./stylesheets/data_pet.css' />
+    <script src='./javascripts/jquery-2.1.0.min.js'></script>
+    <script src='./javascripts/bootstrap.min.js'></script>
+</head>
+
+<body>
+
+<!-- upper right 'sticky' navigation, moves to top for small screens -->
+<div class='navigation'>
+    <br />
+    <a target='_blank' href='https://github.com/K-Y-L-E' class='icon-link'>K-Y-L-E</a>&nbsp;/&nbsp;<a target='_blank' href='https://github.com/K-Y-L-E/DataPet' class='icon-link'>DataPet</a>
+    <br />
+    <a target='_blank' href='https://github.com/K-Y-L-E/DataPet' class='navigation'>View on Github</a></li>
+    <br />
+    <br />
+    <ul>
+        <li><a href='#overview' >Overview</a></li>
+        <li><a href='#db_support'>DB Support</a></li>
+        <li><a href='#installation'>Installation</a></li>
+        <li><a href='#connections'>Connections</a></li>
+        <li><a href='#relations'>Relations</a></li>
+        <li><a href='#usage'>Usage</a></li>
+        <li><a href='#security'>Security</a></li>
+        <li><a href='#help'>Help</a></li>
+    </ul>
+</div>
+
+<!-- orange bar at top of page -->
+<div class='header'></div>
+
+<!-- content -->
+<div class='container'>
+
+    <div class='row'>
+        <div class='col-sm-8'>
+            <h1>DataPet</h1>
+            <p class='note'>
+                A relational database tool for quick navigation between relational data.
+            </p>
+            <hr />
+        </div>
+        <div class='col-sm-4'>
+        </div>
+    </div>
+
+    <div id='overview' class='row'>
+        <div class='col-sm-8'>
+            <h3>Overview</h3>
+            <p>
+                A web application for viewing databases and quickly navigating between relations.
+                Allows for multiple database connections and custom relation definitions configurable via web interface.
+                Navigate through data quickly using the relations button alongside each result set record.
+            </p>
+            <br />
+        </div>
+    </div>
+
+    <div class='row'>
+        <div class='col-sm-12 col-md-8 col-md-offset-2'>
+            <div id="carousel-dp" class="carousel slide" data-ride="carousel">
+
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-dp" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-dp" data-slide-to="1"></li>
+                    <li data-target="#carousel-dp" data-slide-to="2"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img data-src="holder.js/900x500/auto/#777:#555/text:First slide" src='./images/dp_relations_menu.png' alt="...">
+
+                        <div class="carousel-caption">
+                            Quickly access data relations.
+                        </div>
+                    </div>
+                    <div class="item ">
+                        <img style='text-align: center;' src='./images/dp_relations_new.png' alt="...">
+
+                        <div class="carousel-caption">
+                            Create new relations with ease.
+                        </div>
+                    </div>
+                    <div class="item ">
+                        <img style='text-align: center;' src='./images/dp_connections_new.png' alt="...">
+
+                        <div class="carousel-caption">
+                            Create and edit database connections with the built in JSON editor.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-dp" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#carousel-dp" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+            </div>
+            <br />
+        </div>
+    </div>
+
+    <div class='row'>
+        <div class='col-sm-8'>
+            <hr />
+        </div>
+    </div>
+
+    <div id='db_support' class='row'>
+        <div class='col-sm-8'>
+            <h3>DB Support</h3>
+            <p>
+              DataPet has been built for use with the following databases:
+            </p>
+            <ul>
+                <li>MySql</li>
+                <li>Progress</li>
+                <li>MSSQL</li>
+                <li>Sqlite</li>
+                <li>PostgreSQL</li>
+            </ul>
+            <br />
+            <p class='note'>
+               ~ Additional database support will be added upon request ~
+            </p>
+            <br />
+            <hr />
+        </div>
+    </div>
+
+    <div id='installation' class='row'>
+        <div class='col-sm-8'>
+            <h3>Installation</h3>
+
+            <h5>Requirements</h5>
+            <p>The following resources are required to use DataPet.</p>
+            <ul>
+                <li>JRuby</li>
+                <li>MongoDB</li>
+                <li>JDBC Drivers for your database types.</li>
+                <li>Git</li>
+            </ul>
+            <br />
+
+            <h5>Clone the Repo</h5>
+            <code>$ git clone https://github.com/K-Y-L-E/DataPet.git</code>
+            <br />
+            <br />
+
+            <h5>Create a secret_token.rb file</h5>
+            <code>$ cd Datapet</code>
+            <br />
+            <code>$ touch config/initializers/secret_token.rb</code>
+            <br />
+            <br />
+
+            <h5>Add the following line to secret_token.rb</h5>
+            <code>DataPet::Application.config.secret_token = 'secret'</code>
+            <br />
+            <br />
+            <p class='note'>
+                ~ You must replace the text 'secret' with a non-dictionary key ~
+            </p>
+            <br />
+            <br />
+
+            <h5>Install the Ruby gems</h5>
+            <code>$ bundle install</code>
+            <br />
+            <br />
+            <p class='note'>
+                ~ This guide assumes you are using bundler ~
+            </p>
+            <br />
+            <br />
+
+            <h5>Place a copy of the necessary JDBC *.jar files in DataPet/lib</h5>
+            <code>$ cp 'path_to_driver' lib/</code>
+            <br />
+            <br />
+            <p class='note'>
+                ~ More detail about drivers can be found in the <a href='#connections'>connections</a> section ~
+            </p>
+            <br />
+            <br />
+
+            <h5>Install and Start MongoDB</h5>
+            <p>
+                Visit <a href='http://docs.mongodb.org/manual/installation/' target='_blank'>http://docs.mongodb.org/manual/installation/</a> for instructions on installing MongoDB.
+            </p>
+            <p>
+                Start MongoDB with the following command.
+            </p>
+            <code>$ mongod</code>
+            <br />
+            <br />
+
+            <h5>Start the Application</h5>
+            <code>$ jruby -S rails s</code>
+            <br />
+            <br />
+            <p class='note'>
+                One of the benefits of DataPet is the ability to install the application on a server and share a single instance among developers.
+                If you are interested in this type of set-up, you have numerous options.  You can check out one of those options; Phusion Passenger; <a target='_blank' href='https://www.phusionpassenger.com/'>here</a>.
+            </p>
+            <br />
+            <br />
+
+            <h5>Test the Application</h5>
+            <p>
+                Visit <a href='http://localhost:3000' target='_blank' >http://localhost:3000</a> to see the main application page.
+                It won't look like much at this point, but if everything installed correctly, you can start setting up connections.
+            </p>
+            <br />
+            <hr />
+        </div>
+    </div>
+
+    <div id='connections' class='row'>
+        <div class='col-sm-8'>
+            <h3>Connections</h3>
+
+            <h5>Place Drivers in DataPet/lib</h5>
+            <p>
+                Before trying to connect to a database,
+                you will need to download the JDBC drivers for your database and Java version.
+                Once you have downloaded the drivers, place them in DataPet/lib.
+            </p>
+            <p class='note'>~ For MSSQL, rename the driver to jtds.jar ~</p>
+            <br />
+
+            <h5>Creating a New Connection</h5>
+            <p>
+                Visit Connections->New using the top navigation bar.
+            </p>
+            <p>
+                You will be asked for a username and password.  The default user is 'admin',
+                and the default password is 'dataPet'. To change these, or remove authentication all together,
+                see the <a href='#security'>security</a> section.  The following links may be useful.
+            </p>
+            <p>
+                Once authenticated you will be prompted with a json editor containing an example connection object like the one below.
+            </p>
+            <code>
+                {
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"name": "SampleDB",
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"adapter": "jdbc",
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"username": "dataPet",
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"password": "dataPet",
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"driver": "com.ddtek.jdbc.openedge.OpenEdgeDriver",
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"url": "jdbc:datadirect:openedge://example.com:7910;databaseName=test",
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"db_type": "progress"
+                <br />
+                &nbsp;&nbsp;&nbsp;}
+            </code>
+            <br />
+            <br />
+
+            <h5>Attributes Explained</h5>
+            <h6>Name</h6>
+            <p>
+                The name of database as you want it to appear in DataPet.
+            </p>
+            <br />
+            <h6>Adapter</h6>
+            <p>
+                The type of adapter the connection will use. Most likely leave this as 'jdbc'.
+            </p>
+            <br />
+            <h6>Username</h6>
+            <p>
+                The username for connecting to the database.
+            </p>
+            <br />
+            <h6>Password</h6>
+            <p>
+                The password for connecting to the database.
+            </p>
+            <br />
+            <h6>Driver</h6>
+            <p>
+                The name of the driver you placed in lib for this connection.
+            </p>
+            <p class='note'>Some example are as follows:</p>
+            <ul>
+                <li><code style='padding-left:0;'>com.ddtek.jdbc.openedge.OpenEdgeDriver</code></li>
+                <li><code style='padding-left:0;'>net.sourceforge.jtds.jdbc.Driver</code></li>
+                <li><code style='padding-left:0;'>org.postgresql.Driver</code></li>
+                <li><code style='padding-left:0;'>com.mysql.jdbc.Driver</code></li>
+                <li><code style='padding-left:0;'>org.sqlite.JDBC</code></li>
+            </ul>
+            <br />
+            <h6>Url</h6>
+            <p>
+                The jdbc connection string for the connection.
+            </p>
+            <br />
+            <h6>DB Type</h6>
+            <p>
+                The type of database you are connecting to. This is limited to the database types <a href='#db_support'>supported</a> by DataPet
+            </p>
+            <br />
+
+            <h5>Test the Connection</h5>
+            <p>
+                Click the test button to see if your configuration is correct.
+                A notice should appear in the upper right hand corner of the screen letting you know the results.
+            </p>
+            <p>
+                If you are having trouble connecting to a database visit the <a href='#help' >help</a> section.
+            </p>
+            <br />
+
+            <h5>Create the Connection</h5>
+            <p>
+                If the connection test was successful, click create to save the connection.
+                You will see a notice in the upper right hand of the screen letting you know if the connection was successfully created.
+            </p>
+            <p>
+                Once you're finished creating connections, you are ready to start setting up relations.
+            </p>
+            <p class='note'>
+                ~ If you prefer, you can start using DataPet without relations at this point. ~
+            </p>
+            <br />
+
+            <h5>Destroying and Editing Connections</h5>
+            <p>
+                Visit Connections->All using the top navigation bar.
+            </p>
+            <p>
+                You will see a list of all the currently saved connections, along with edit and delete buttons for each.
+            </p>
+            <br />
+            <hr />
+        </div>
+    </div>
+
+    <div id='relations' class='row'>
+        <div class='col-sm-8'>
+            <h3>Relations</h3>
+
+            <h5>Creating a New Relation</h5>
+            <p>Visit Relations->New using the top navigation bar.</p>
+            <p>
+                Fill out the form to set up quick navigation between relations.
+                There are numerous options when it comes to relations, they can
+                be set up between tables, across connections, include custom WHERE filters, and build upon other relations using the type 'Has Through'.
+                The interface will guide you through the process and autocomplete whenever possible.
+            </p>
+            <br />
+
+            <h5>Relation Form Fields Explained</h5>
+            <h6>Relation Name</h6>
+            <p>
+                The name of the relation as you want it to appear in DataPet.
+            </p>
+            <br />
+            <h6>From Connection Name</h6>
+            <p>
+                The connection containing the table from which the relation is accessible.
+            </p>
+            <br />
+            <h6>From Table Name</h6>
+            <p>
+                The table from which the relation is accessible.
+            </p>
+            <br />
+            <h6>Relation Type</h6>
+            <p>
+                Either 'Has' or 'Has Many'.  Relationships are driven entirely from WHERE clauses, so
+                other relation types such as 'has one' or 'belongs to' have no significance here.  Choose 'Has' when the relation
+                is being set up for a direct relation.  Choose 'Has Through' when the relation will first go through a
+                previously created relation.
+            </p>
+            <p class='note'>
+                ~ You must create at least one 'Has' relation for a connection/table combination before creating a 'Has Through' relation for that connection/table combination. ~
+            </p>
+            <br />
+            <h6>To Connection Name</h6>
+            <p>
+                The connection containing the table to be queried last upon clicking the relation.
+            </p>
+            <br />
+            <h6>To Table Name</h6>
+            <p>
+                The table to be queried last upon clicking the relation.
+            </p>
+            <br />
+            <h6>WHERE->Column To</h6>
+            <p>
+                A column from the 'To Table' previously selected.
+            </p>
+            <br />
+            <h6>WHERE->Is</h6>
+            <p>
+                The comparison to be made between 'Column To' and either 'Column From' or a hard coded value.
+            </p>
+            <br />
+            <h6>WHERE->Comparison Type</h6>
+            <p>
+                Either 'Column' or 'Value'.  Choose 'Column' to compare the 'Column To' value against a column in the 'To Table'.  Choose 'Value' to compare the 'Column To' value against a hard coded value.
+            </p>
+            <br />
+            <h6>WHERE->Column From or WHERE->Comparison Value</h6>
+            <p>
+                When 'Column' is selected for 'WHERE->Comparison Type', then this is a column from the 'To Table'.  If 'Value' was chosen then this is a value to compare against.
+            </p>
+            <br />
+            <h6>Through Relation Name</h6>
+            <p>
+                The name of the previously created relation through which you want to create a new relation.
+            </p>
+            <br />
+            <h6>JOIN->Column From</h6>
+            <p>
+                The column you wish to join from the through relation 'To Table' to the current 'To Table'.
+            </p>
+            <p class='note'>
+                ~ The table names will prefix the fields as you fill out the form. ~
+            </p>
+            <br />
+
+            <h5>Example Relations</h5>
+            <h6>'Has'</h6>
+            <p>
+                An Artist 'Has' Albums, and both tables in the same database named MusicDB.
+            </p>
+            <table>
+                <thead>
+                <tr>
+                    <th>Field Name</th>
+                    <th>Value</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Relation Name</td>
+                    <td>Albums</td>
+                </tr>
+                <tr>
+                    <td>From Connection</td>
+                    <td>MusicDB</td>
+                </tr>
+                <tr>
+                    <td>From Table</td>
+                    <td>Artist</td>
+                </tr>
+                <tr>
+                    <td>To Connection</td>
+                    <td>MusicDB</td>
+                </tr>
+                <tr>
+                    <td>To Table</td>
+                    <td>Albums</td>
+                </tr>
+                <tr>
+                    <td>WHERE->Column To</td>
+                    <td>artist_id</td>
+                </tr>
+                <tr>
+                    <td>WHERE->Is</td>
+                    <td>Equal To</td>
+                </tr>
+                <tr>
+                    <td>WHERE->Comparison Type</td>
+                    <td>Column</td>
+                </tr>
+                <tr>
+                    <td>WHERE->Column From</td>
+                    <td>id</td>
+                </tr>
+                </tbody>
+            </table>
+            <br />
+            <p class='note'>
+                ~ Multiple WHERE Clauses can be added by pressing the plus sign next to WHERE. ~
+            </p>
+
+            <br />
+
+            <h6>'Has Through'</h6>
+            <p>An Artist has Tracks 'Through' Albums, and all three tables in the same database named MusicDB.</p>
+            <table>
+                <thead>
+                <tr>
+                    <th>Field Name</th>
+                    <th>Value</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Relation Name</td>
+                    <td>Tracks</td>
+                </tr>
+                <tr>
+                    <td>From Connection</td>
+                    <td>MusicDB</td>
+                </tr>
+                <tr>
+                    <td>From Table</td>
+                    <td>Artist</td>
+                </tr>
+                <tr>
+                    <td>To Connection</td>
+                    <td>MusicDB</td>
+                </tr>
+                <tr>
+                    <td>To Table</td>
+                    <td>Tracks</td>
+                </tr>
+                <tr>
+                    <td>Through Relation Name</td>
+                    <td>Albums</td>
+                </tr>
+                <tr>
+                    <td>JOIN->Column From Albums</td>
+                    <td>id</td>
+                </tr>
+                <tr>
+                    <td>JOIN->Column From Tracks</td>
+                    <td>album_id</td>
+                </tr>
+                </tbody>
+            </table>
+            <br />
+            <p class='note'>
+                ~ Multiple JOIN Clauses can be added by pressing the plus sign next to JOIN. ~
+            </p>
+            <br />
+
+            <h5>Using Relations</h5>
+            <p>
+                Once you have some relations set up, you can start taking advantage of them.
+                To use a relation, click the table name you used as 'From Table Name' while setting up the relation in
+                the connections pane on the left side of the main page.  This will open the table in a window on the right side of the page.
+                If you have a lot of tables to scroll through, use the filter at the top of the connections pane to narrow down the list.
+            </p>
+            <p>
+                Once table data is loaded, you can click the numbered blue cell to the left of any record to open up the relations menu.
+                Clicking on a relation name from the relations menu will open up the related data in a new tab.
+            </p>
+            <br />
+
+            <h5>Destroying and Editing Relations</h5>
+            <p>
+                Visit Relations->All using the top navigation bar.
+            </p>
+            <p>
+                You will see a list of all the currently saved relations, along with edit and delete buttons for each.
+            </p>
+            <br />
+            <hr />
+        </div>
+    </div>
+
+    <div id='usage' class='row'>
+        <div class='col-sm-8'>
+            <h3>Usage</h3>
+            <p>
+                Using DataPet is a fairly simple process once all your connections and relations are configured.
+            </p>
+            <p>
+                To get started navigate to the root of the app.
+            </p>
+            <p>
+                Start typing a table name in the filter in the connections pane, and click on the table name you want to view.
+            </p>
+            <p>
+                Once the table window is open, you can type in filter at the top of the new window.
+                This can be a WHERE or ORDER BY clause or any combination of the two.
+                Hit enter to filter the data and reload the table.
+            </p>
+            <p>
+                After you've filtered the data, click the numbered blue cell to the left of any record to access relations for that record.
+            </p>
+            <p>
+                That's it! DataPet is simple to use, but can save you precious time when looking through data.
+                It is a great alternative to copying and pasting pieces of result sets into to form new queries.
+            </p>
+            <br />
+            <hr />
+        </div>
+    </div>
+
+    <div id='security' class='row'>
+        <div class='col-sm-8'>
+            <h3>Security</h3>
+            <p>
+                The connections section of DataPet by default requires authorization.
+                If you want to change this behavior, you can edit the file DataPet/app/controllers/connections_controller.rb.
+            </p>
+            <p>
+                Change the following line of code as needed.
+            </p>
+            <code>
+                http_basic_authenticate_with :name => "admin", :password => "dataPet", only: [ :new, :edit, :show, :create, :update, :destroy ]
+            </code>
+            <br />
+            <br />
+            <p class='note'>
+                ~ To remove authentication all together, just delete the previous line of code. ~
+            </p>
+            <br />
+            <hr />
+        </div>
+    </div>
+
+    <div id='help' class='row'>
+        <div class='col-sm-8'>
+            <h3>Help</h3>
+            <p>
+                DataPet was created to help developers dig through data while creating, maintaining, and supporting applications.
+                As long as the rails server was started in development mode, you will receive a decent error message from any failed network call.
+            </p>
+            <p>
+                To view more detailed error messages, open up the developer tools of your browser, and preview the response from the server.
+            </p>
+            <p>
+                It may also be helpful to tail the log for DataPet using the following command from the root of the application.
+            </p>
+            <code>$ tail -f log/development.log</code>
+            <br />
+            <br />
+            <p>
+                If you come across an error you can't figure out, or if you have some suggestions for DataPet,
+                please open an issue through Github at <a href='https://github.com/K-Y-L-E/DataPet/issues' target='_blank'>https://github.com/K-Y-L-E/DataPet/issues</a>.
+            </p>
+            <br />
+            <hr />
+        </div>
+    </div>
+
+    <div class='row'>
+        <div class='col-sm-8'>
+            <h2>Thank you for checking out DataPet!</h2>
+            <br />
+        </div>
+    </div>
+
+</div>
+
+<!-- orange bar at bottom of page -->
+<div class='footer'></div>
+
+</body>
+</html>
