@@ -611,19 +611,17 @@
             <h3>Security</h3>
             <p>
                 The connections section of DataPet requires authorization by default.
-                If you want to change this behavior, you can edit the file DataPet/app/controllers/connections_controller.rb.
+                If you want to change this behavior, you can edit the file DataPet/config/initializers/datapet_authorization.rb.
             </p>
+            <h5>Remove Security
             <p>
-                Change the following line of code as needed.
+                Change REQUIRE_AUTH = true to REQUIRE_AUTH = false
             </p>
-            <code>
-                http_basic_authenticate_with :name => "admin", :password => "dataPet", only: [ :new, :edit, :show, :create, :update, :destroy ]
-            </code>
             <br />
-            <br />
-            <p class='note'>
-                ~ To remove authentication all together, just delete the previous line of code. ~
-            </p>
+            <h5>Change Username and Password
+                Set USERNAME and PASSWORD to anything you want.
+            </h5>
+            </h5>
             <br />
             <hr />
         </div>
