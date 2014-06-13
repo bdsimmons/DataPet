@@ -129,9 +129,8 @@
               DataPet has been built for use with the following databases:
             </p>
             <ul>
-                <li>MySql</li>
                 <li>Progress</li>
-                <li>MSSQL</li>
+                <li>SqlServer</li>
                 <li>Sqlite</li>
                 <li>PostgreSQL</li>
             </ul>
@@ -152,7 +151,6 @@
             <p>The following resources are required to use DataPet.</p>
             <ul>
                 <li>JRuby</li>
-                <li>MongoDB</li>
                 <li>JDBC Drivers for your database types.</li>
                 <li>Git</li>
             </ul>
@@ -160,23 +158,6 @@
 
             <h5>Clone the Repo</h5>
             <code>$ git clone https://github.com/K-Y-L-E/DataPet.git</code>
-            <br />
-            <br />
-
-            <h5>Create a secret_token.rb file</h5>
-            <code>$ cd Datapet</code>
-            <br />
-            <code>$ touch config/initializers/secret_token.rb</code>
-            <br />
-            <br />
-
-            <h5>Add the following line to secret_token.rb</h5>
-            <code>DataPet::Application.config.secret_token = 'secret'</code>
-            <br />
-            <br />
-            <p class='note'>
-                ~ You must replace the text 'secret' with a non-dictionary key ~
-            </p>
             <br />
             <br />
 
@@ -197,17 +178,6 @@
             <p class='note'>
                 ~ More detail about drivers can be found in the <a href='#connections'>connections</a> section ~
             </p>
-            <br />
-            <br />
-
-            <h5>Install and Start MongoDB</h5>
-            <p>
-                Visit <a href='http://docs.mongodb.org/manual/installation/' target='_blank'>http://docs.mongodb.org/manual/installation/</a> for instructions on installing MongoDB.
-            </p>
-            <p>
-                Start MongoDB with the following command.
-            </p>
-            <code>$ mongod</code>
             <br />
             <br />
 
@@ -244,38 +214,16 @@
             </p>
             <br />
 
-            <h5>Creating a New Connection</h5>
+            <h5>Creating a New Database Connection</h5>
             <p>
-                Visit Connections->New using the top navigation bar.
+                Visit Databases->New using the top navigation bar.
             </p>
             <p>
                 You will be asked for a username and password.  The default user is 'dataPet',
                 and the default password is 'dataPet'. To change these, or remove authentication all together,
                 see the <a href='#security'>security</a> section.  The following links may be useful.
             </p>
-            <p>
-                Once authenticated you will be prompted with a json editor containing an example connection object like the one below.
-            </p>
-            <code>
-                {
-                <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"name": "SampleDB",
-                <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"adapter": "jdbc",
-                <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"username": "dataPet",
-                <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"password": "dataPet",
-                <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"driver": "com.ddtek.jdbc.openedge.OpenEdgeDriver",
-                <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"url": "jdbc:datadirect:openedge://example.com:7910;databaseName=test",
-                <br />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"db_type": "progress"
-                <br />
-                &nbsp;&nbsp;&nbsp;}
-            </code>
-            <br />
+
             <br />
 
             <h5>Attributes Explained</h5>
@@ -286,7 +234,7 @@
             <br />
             <h6>Adapter</h6>
             <p>
-                The type of adapter the connection will use. Most likely leave this as 'jdbc'.
+                The type of adapter the connection will use. ie: Progress, Mysql, SqlServer, Postgres
             </p>
             <br />
             <h6>Username</h6>
@@ -299,27 +247,9 @@
                 The password for connecting to the database.
             </p>
             <br />
-            <h6>Driver</h6>
-            <p>
-                The name of the driver you placed in lib for this connection.
-            </p>
-            <p class='note'>Some example are as follows:</p>
-            <ul>
-                <li><code style='padding-left:0;'>com.ddtek.jdbc.openedge.OpenEdgeDriver</code></li>
-                <li><code style='padding-left:0;'>net.sourceforge.jtds.jdbc.Driver</code></li>
-                <li><code style='padding-left:0;'>org.postgresql.Driver</code></li>
-                <li><code style='padding-left:0;'>com.mysql.jdbc.Driver</code></li>
-                <li><code style='padding-left:0;'>org.sqlite.JDBC</code></li>
-            </ul>
-            <br />
             <h6>Url</h6>
             <p>
                 The jdbc connection string for the connection.
-            </p>
-            <br />
-            <h6>DB Type</h6>
-            <p>
-                The type of database you are connecting to. This is limited to the database types <a href='#db_support'>supported</a> by DataPet
             </p>
             <br />
 
@@ -346,9 +276,9 @@
             </p>
             <br />
 
-            <h5>Destroying and Editing Connections</h5>
+            <h5>Destroying and Editing Database Connections</h5>
             <p>
-                Visit Connections->All using the top navigation bar.
+                Visit Databases->All using the top navigation bar.
             </p>
             <p>
                 You will see a list of all the currently saved connections, along with edit and delete buttons for each.
@@ -564,12 +494,12 @@
             </p>
             <br />
 
-            <h5>Destroying and Editing Relations</h5>
+            <h5>Destroying Relations</h5>
             <p>
                 Visit Relations->All using the top navigation bar.
             </p>
             <p>
-                You will see a list of all the currently saved relations, along with edit and delete buttons for each.
+                You will see a list of all the currently saved relations, along with delete buttons for each.
             </p>
             <br />
             <hr />
